@@ -1,6 +1,16 @@
 <li>
-  Name: <%= user.name %>
-  <span class="profile-link">
-    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-  </span>
+  <% unless user == current_user %>
+  <h4 class="d-flex flex-column border-solid">
+      <%= user.name %>
+    <span class="profile-link mt-2"> 
+      <%= link_to 'See Profile',  user_path(user), class: 'btn-primary btn' %> 
+    </span> 
+    <span class="profile-link">
+    <%= make_request(user.id) %>
+    </span>
+    <div>
+    <%= accept_request(user.id) %>
+    <%= cancel_request(user.id) %>
+    <% end %>
+  </h4>
 </li>
